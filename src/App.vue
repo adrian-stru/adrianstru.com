@@ -1,24 +1,25 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-black">
     <router-view/>
-    <!--
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-    -->
   </div>
 </template>
 
-<style>
+<script lang="ts">
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
+@Component
+export default class App extends Vue {
+    constructor() {
+        super();
+    }
+}
+</script>
+
+
+<style>
 #app {
   font-family: 'IBM Plex Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 0;
-  padding: 0;
 }
 </style>
