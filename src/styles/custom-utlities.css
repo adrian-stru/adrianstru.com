@@ -1,0 +1,42 @@
+.hover\:bg-gray:hover {
+   @apply bg-grey;
+}
+
+.hover\:color-white:hover {
+    @apply text-white;
+}
+
+.w-max-1000px {
+    max-width: 1000px;
+}
+
+@responsive {
+    .w-max {
+        width: 1000px;
+    }
+}
+
+
+.trans {
+    transition: all .25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.15s;
+}
+
+.trans-bg {
+    transition-property: background;
+}
+
+.trans-slow {
+    transition-duration: .5s;
+}
+
+.trans-slower {
+    transition-duration: .5s;
+}
+
+.trans-fast {
+    transition-duration: .15s;
+}
+
+.trans-faster {
+    transition-duration: .075s;
+}

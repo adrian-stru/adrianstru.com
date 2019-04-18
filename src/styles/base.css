@@ -1,31 +1,22 @@
-body {
-    font-size: calc(10px + 0.33vw);
-}
-
-h1 {
-    font-size: 4.6em;
-}
-
-h2 {
-    font-size: 3.6em;
-}
-
-h3 {
-    font-size: 2.8em;
-}
-
-h4 {
-    font-size: 2.2em;
-}
-
-h5 {
-    font-size: 1.8em;
-}
-
-h6 {
-    font-size: 1.6em;
+html {
+    background: black;
 }
 
 p {
     margin: 1em 0;
+}
+
+a {
+    color: inital;
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+button:focus {
+    outline: none;
 }
