@@ -1,6 +1,7 @@
 <template>
     <div>
-        <header class="absolute pin-t w-full px-12 py-8 z-50">
+        <header class="pin-t w-full px-12 py-8 z-50"
+        :class="[menuActive ? 'fixed' : 'absolute']">
         <nav class="flex flex-row justify-between">
             <div class="w-1/4 text-white">Adrian Struszczyk</div>
             <div v-if="!showHamburger" class="w-3/4 flex justify-end">
