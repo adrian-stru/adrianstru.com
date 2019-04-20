@@ -13,12 +13,28 @@
 
 <script lang=ts>
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import {TweenMax} from 'gsap';
 import * as THREE from 'three';
 import {EffectComposer, EffectPass, RenderPass, NoiseEffect, BlendFunction, Effect } from 'postprocessing';
 import Stats from 'stats.js';
 import Mouse from '../utility/mouse';
+import * as dat from 'dat.gui';
 import image from '@/assets/textures/nasa-desat.jpg';
 import {OrbitControls} from 'three-orbitcontrols-ts';
+
+interface introConfig {
+    mousemove: {
+        delay: number,
+        tweenDuration: number,
+    },
+    sphere: {
+        rotation: {
+            x: number,
+            y: number,
+            z: number,
+        },
+    },
+};
 
 @Component
 export default class Intro extends Vue {
@@ -34,6 +50,8 @@ export default class Intro extends Vue {
     private controls: any;
     private meshes: Map<string, THREE.Mesh>;
     private stats!: any;
+    private gui: dat.GUI;
+    protected config: introConfig;
 
     constructor() {
         super();
@@ -45,9 +63,23 @@ export default class Intro extends Vue {
         this.setupLights();
         this.renderer = this.setupRenderer();
         this.composer = new EffectComposer(this.renderer);
+        this.config = {
+            mousemove: {
+                delay: 8,
+                tweenDuration: 30,
+            },
+            sphere: {
+                rotation: {
+                    x: 0.11,
+                    y: 0.11,
+                    z: 0,
+                },
+            },
+        };
 
         // @ts-ignore
         this.stats = new Stats();
+        this.gui = this.setupGUI();
 
         this.setupPostProcessing();
         this.frameId = -1;
@@ -60,7 +92,7 @@ export default class Intro extends Vue {
         this.$el.appendChild( this.stats.dom );
         window.addEventListener('resize', this.onWindowResize);
         if (!this.controls) {
-           window.addEventListener( 'mousemove', this.onDocumentMouseMove );
+           window.addEventListener( 'mousemove', this.onMouseMove );
         }
         this.start();
     }
@@ -68,6 +100,7 @@ export default class Intro extends Vue {
     private unmount() {
         this.stop();
         this.$el.removeChild(this.composer.getRenderer().domElement);
+        this.gui.destroy();
     }
 
     private setupCamera() {
@@ -140,6 +173,19 @@ export default class Intro extends Vue {
         this.controls.enableKeys = false;
     }
 
+    private setupGUI = () => {
+        const gui = new dat.GUI();
+        const cameraFolder = gui.addFolder('mousemove');
+        const sphereFolder = gui.addFolder('sphere');
+        cameraFolder.add(this.config.mousemove, 'delay', 0, 100);
+        cameraFolder.add(this.config.mousemove, 'tweenDuration', 0, 120);
+        sphereFolder.add(this.config.sphere.rotation, 'x', 0, 1.0000);
+        sphereFolder.add(this.config.sphere.rotation, 'y', 0, 1.00000);
+        sphereFolder.add(this.config.sphere.rotation, 'z', 0, 1.00000);
+
+        return gui;
+    }
+
     private setupPostProcessing = () => {
         const noiseEffect = new NoiseEffect({
             blendFunction: BlendFunction.OVERLAY,
@@ -180,13 +226,13 @@ export default class Intro extends Vue {
 
         const sphere = this.meshes.get('sphere');
         if (sphere !== undefined) {
-            sphere.rotation.x += delta * 1 / 32;
-            sphere.rotation.y += delta * 1 / 32;
+            sphere.rotation.x += delta * this.config.sphere.rotation.x; // 1/32
+            sphere.rotation.y += delta * this.config.sphere.rotation.y;
+            sphere.rotation.z += delta * this.config.sphere.rotation.z;
         }
     }
 
-    private updateCamera = (e: MouseEvent) => {
-        this.mouse.set( -( e.clientY / window.innerHeight ) * 2 + 1, ( e.clientX / window.innerWidth ) * 2 - 1);
+    private updateCamera = () => {
         this.camera.rotation.x += ( this.mouse.x * 0.1 - this.camera.rotation.x ) * 0.11;
         this.camera.rotation.y += ( this.mouse.y * -0.1 - this.camera.rotation.y ) * 0.11;
     }
@@ -197,11 +243,16 @@ export default class Intro extends Vue {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    /**
-     * TODO Throttle mouse event for performance
-     */
-    private onDocumentMouseMove(e: MouseEvent) {
-        this.updateCamera(e);
+    private onMouseMove = (e: MouseEvent) => {
+        TweenMax.to(this.mouse, this.config.mousemove.tweenDuration, {
+            x: -( e.clientY / window.innerHeight ) * 2 + 1,
+            y: ( e.clientX / window.innerWidth ) * 2 - 1,
+            delay: this.config.mousemove.delay,
+            useFrames: true,
+            onUpdate: () => {
+                this.updateCamera();
+            },
+        });
     }
 }
 </script>
