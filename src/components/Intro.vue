@@ -70,8 +70,8 @@ export default class Intro extends Vue {
             },
             sphere: {
                 rotation: {
-                    x: 0.11,
-                    y: 0.11,
+                    x: 0.03125,
+                    y: 0.03125,
                     z: 0,
                 },
             },
