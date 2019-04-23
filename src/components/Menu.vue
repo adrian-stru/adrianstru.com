@@ -1,7 +1,7 @@
 <template>
     <div class="overlay fixed w-full h-screen pin bg-black outline-none opacity-0 trans z-neg"
     :class="{'is-active': active}">
-        <ul class="text-white text-center menu-links py-32 bg-black">
+        <ul class="text-white text-center menu-links py-12 sm:py-24 md:py-32 bg-black">
             <li class="text-2xl py-3 cursor-pointer menu-link trans" @click.prevent="onMenuLinkClick('about')">About</li>
             <li class="text-2xl py-3 cursor-pointer menu-link trans" @click.prevent="onMenuLinkClick('work')">Work</li>
             <li class="text-2xl py-3 cursor-pointer menu-link trans" @click.prevent="onMenuLinkClick('projects')">Projects</li>
@@ -34,12 +34,7 @@ export default class Menu extends Vue {
 }
 </script>
 
-<style>
-
-.overlay {
-    z-index: -10;
-}
-
+<style lang="scss" scoped>
 .is-active {
     z-index: 10 !important;
     opacity: 1 !important;
@@ -54,11 +49,9 @@ export default class Menu extends Vue {
 .menu-link {
     position: relative;
     top: 0;
+    &:hover {
+        top: -2px;
+    }
 }
-
-.menu-link:hover {
-    top: -2px;
-}
-
 </style>
 
