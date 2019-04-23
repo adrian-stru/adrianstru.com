@@ -56,19 +56,18 @@ export default class WorkManager extends Vue {
     }
 
     get selectedItem() {
-        // @ts-ignore
         return this.works[this.selected];
     }
 
     private mounted() {
-        ScrollReveal().reveal('.work-description', {delay: 250});
+        ScrollReveal().reveal('.work-details', {delay: 250});
     }
 
     @Watch('selected')
     private onSelectionChanged(value: number, oldValue: number) {
         // @ts-ignore
-        ScrollReveal().clean('.work-description');
-        ScrollReveal().reveal('.work-description', {delay: 150});
+        ScrollReveal().clean('.work-details');
+        ScrollReveal().reveal('.work-details', {delay: 100});
     }
 }
 </script>
