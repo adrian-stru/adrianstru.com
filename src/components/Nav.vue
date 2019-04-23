@@ -1,27 +1,27 @@
 <template>
     <div>
-        <header class="pin-t w-full px-12 py-8 z-50"
+        <header class="pin-t z-50 w-full mx-auto p-6 lg:px-12 "
         :class="[menuActive ? 'fixed' : 'absolute']">
         <nav class="flex flex-row justify-between">
-            <div class="w-1/4 text-white">Adrian Struszczyk</div>
+            <div class="w-1/4 text-white logo">Adrian Struszczyk</div>
             <div v-if="!showHamburger" class="w-3/4 flex justify-end">
                 <ul class="inline-block">
-                    <li class="inline-block px-4 text-sm text-white font-bold ">
+                    <li class="nav-link inline-block px-4 text-sm text-white font-bold ">
                         <a href="#" class="text-white no-underline" @click.prevent="onNavClick('about')">
                             About
                         </a>
                     </li>
-                    <li class="inline-block px-4 text-sm text-white font-bold">
+                    <li class="nav-link inline-block px-4 text-sm text-white font-bold">
                         <a href="#" class="text-white no-underline" @click.prevent="onNavClick('work')">
                             Work
                         </a>
                     </li>
-                    <li class="inline-block px-4 text-sm text-white font-bold" @click.prevent="onNavClick('projects')">
+                    <li class="nav-link inline-block px-4 text-sm text-white font-bold" @click.prevent="onNavClick('projects')">
                         <a href="#" class="text-white no-underline">
                             Projects
                         </a>
                     </li>
-                    <li class="inline-block pl-4 text-sm text-white font-bold" @click.prevent="onNavClick('contact')">
+                    <li class="nav-link inline-block pl-4 text-sm text-white font-bold" @click.prevent="onNavClick('contact')">
                         <a href="#" class="text-white no-underline">
                         Contact
                         </a>
