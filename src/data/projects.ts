@@ -13,8 +13,8 @@ const projectsConfig: ProjectInterface[] = [
     {
         name: 'personal site',
         description: 'My first portfolio website that I designed and built.',
-        githubUrl: 'ddd',
-        siteUrl: 'dsd',
+        githubUrl: '/',
+        siteUrl: 'https://github.com/adrian-stru/adrianstru.com',
         tags: [
             'vue',
             'webgl',
@@ -24,8 +24,8 @@ const projectsConfig: ProjectInterface[] = [
     {
         name: 'summers-left',
         description: 'Small webapp that shows how many summers you have remaining',
-        githubUrl: 'dsds',
-        siteUrl: 'dd',
+        githubUrl: '',
+        siteUrl: '',
         tags: [
             'react',
             'typescript',
@@ -81,7 +81,6 @@ const projectsConfig: ProjectInterface[] = [
             'pwa',
             'node',
             'express',
-            'docker',
         ],
     },
     {
