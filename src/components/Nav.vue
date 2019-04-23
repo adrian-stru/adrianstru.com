@@ -52,11 +52,13 @@
     import { TweenMax } from 'gsap';
     import { ScrollToPlugin } from 'gsap/all';
     import Menu from '@/components/Menu.vue';
+    import ScrollReveal from 'scrollreveal';
 
-    // Needed because plugin is removed during tree shaking
-    const plugin = [ScrollToPlugin];
     const MAXWIDTH = 1000;
 
+    // Needed because ScrollToPlugin is removed during tree shaking
+    const plugin = [ScrollToPlugin];
+    
     @Component({
         components: {
             Menu,
@@ -74,6 +76,15 @@
 
         private created() {
             window.addEventListener('resize', this.onWindowResize);
+        }
+
+        private mounted() {
+            /**
+             * TODO: Factor out all scroll reveal calls. Delays should respond to doc width is < || > 1000.
+             */
+            // @ts-ignore
+            ScrollReveal().reveal('.nav-link', {delay: 200, interval: 200});
+            ScrollReveal().reveal('.logo', {delay: 1000});
         }
 
         private destroyed() {
