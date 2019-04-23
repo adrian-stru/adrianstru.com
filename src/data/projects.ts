@@ -1,6 +1,15 @@
 // tslint:disable: max-line-length
 
-const projectsData = [
+interface ProjectInterface {
+    name: string;
+    description: string;
+    githubUrl: string;
+    siteUrl: string;
+    tags: string[];
+}
+
+
+const projectsConfig: ProjectInterface[] = [
     {
         name: 'personal site',
         description: 'My first portfolio website that I designed and built.',
@@ -102,4 +111,4 @@ const projectsData = [
     },
 ];
 
-export default projectsData;
+export {ProjectInterface as Project, projectsConfig};

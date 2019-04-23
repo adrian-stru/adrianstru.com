@@ -1,6 +1,15 @@
 // tslint:disable: max-line-length
 
-const workData = [
+interface WorkItemInterface {
+  title: string;
+  company: string;
+  url: string;
+  startDate: string;
+  endDate: string;
+  bullets: string[];
+}
+
+const workConfig: WorkItemInterface[] = [
         {
             title: 'Web Developer',
             company: 'Antara Life',
@@ -36,4 +45,4 @@ const workData = [
         },
     ];
 
-export default workData;
+export {WorkItemInterface as WorkItem, workConfig};
