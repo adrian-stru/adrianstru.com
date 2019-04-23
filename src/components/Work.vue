@@ -1,11 +1,7 @@
 <template>
-    <section id="work" class="text-white bg-black w-5/6 px-12 lg:w-max mx-auto py-32 z-1">
-        <div class="w-full">
-            <h1>Work</h1>
-            <div>
-                <WorkManager :works="works"/>
-            </div>
-        </div>
+    <section id="work" class="base-grid text-white bg-black z-1">
+        <h1 class="text-center">Work</h1>
+        <WorkManager :works="works"/>
     </section>
 </template>
 
