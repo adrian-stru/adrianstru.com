@@ -33,6 +33,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import ScrollReveal from 'scrollreveal';
+import {WorkItem} from '@/data/work';
 
 @Component({
   components: {
@@ -42,9 +43,8 @@ import ScrollReveal from 'scrollreveal';
   },
 })
 export default class WorkManager extends Vue {
-    private works!: object[];
+    private works!: WorkItem[];
     private selected: number;
-
 
     constructor() {
         super();
