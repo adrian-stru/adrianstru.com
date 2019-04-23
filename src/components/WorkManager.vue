@@ -1,32 +1,28 @@
 <template>
-    <section class="text-white py-32">
-        <div class="w-full mx-auto flex flex-col lg:flex-row justify-between">
-            <div class="work-nav my-4 lg:my-0">
-                <div class="flex flex-row lg:flex-col justify-center lg:w-32 mx-auto">
-                   <button v-for="(item, index) in works" :key="index" @click.prevent="onClickHandler(index)"
-                    class="px-3 lg:px-1 py-3 text-sm work-nav-button text-grey-darker hover:bg-gray hover:text-white trans" 
-                    v-bind:class="[(selected == index) ? 'work-nav-button--selected text-white' : '']" >
-                        {{item.company}}
-                    </button>  
-                </div>
+    <div class="flex flex-col md:flex-row justify-between py-12">
+        <ul class="work-nav flex flex-row justify-center mx-auto mb-4 md:mb-auto md:flex-col">
+            <li v-for="(item, index) in works" :key="index" @click.prevent="onClickHandler(index)"
+                class="work-nav__item hover:bg-grey hover:text-white trans md:text-center sm:text-sm lg:px-1" 
+                v-bind:class="[(selected == index) ? 'work-nav__item--selected' : '']">
+                {{item.company}}
+            </li>
+        </ul>
+        <div class="work-details mx-auto md:pl-8 md:ml-auto">
+            <div class="work-details__head py-2 text-center md:text-left">
+                <span class="text-sm sm:text-lg">{{selectedItem.title}}</span>
+                <span class="text-sm sm:text-lg text-grey-lightest company-name"> @ {{selectedItem.company}}</span>
             </div>
-            <div class="work-description w-full lg:pl-12 text-center lg:text-left">
-                <div class="py-2">
-                    <span class="text-lg">{{selectedItem.title}}</span>
-                    <span class="text-lg text-grey-lightest company-name"> @ {{selectedItem.company}} </span>
-                </div>
-                <div class="mb-8 text-grey-lighter">
-                    <span class="text-sm">{{selectedItem.startDate}} {{(selectedItem.startDate === '') ? '' : '-'}} {{selectedItem.endDate}}</span>
-                </div>
-                <ul class="bullets p-0">
-                    <li v-for="(bullet, index) in selectedItem.bullets" :key="index"
-                    class="pb-3 flex bullet w-2/3 mx-auto lg:m-0 text-left">
-                        <span class="text-sm leading-normal">{{bullet}}</span>
-                    </li>
-                </ul>
+            <div class="work-details__date mb-8 text-grey-lighter text-center md:text-left">
+                <span class="text-sm">{{selectedItem.startDate}} {{(selectedItem.startDate === '') ? '' : '-'}} {{selectedItem.endDate}}</span>
             </div>
+            <ul class="work-details__list p-0">
+                <li v-for="(bullet, index) in selectedItem.bullets" :key="index"
+                class="bullet pb-3 flex w-full mx-auto lg:m-0 text-left">
+                    <span class="text-sm leading-normal">{{bullet}}</span>
+                </li>
+            </ul>
         </div>
-    </section>
+    </div>
 </template>
 
 
