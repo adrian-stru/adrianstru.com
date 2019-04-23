@@ -13,8 +13,8 @@ const projectsConfig: ProjectInterface[] = [
     {
         name: 'personal site',
         description: 'My first portfolio website that I designed and built.',
-        githubUrl: '/',
-        siteUrl: 'https://github.com/adrian-stru/adrianstru.com',
+        githubUrl: 'https://github.com/adrian-stru/adrianstru.com',
+        siteUrl: '/',
         tags: [
             'vue',
             'webgl',
