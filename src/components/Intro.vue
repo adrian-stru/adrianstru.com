@@ -1,11 +1,11 @@
 <template>
     <section id="intro">
-       <div id="canvas"></div>
-        <div class="blurb">
-            <h4 class="text-xl">Hello</h4>
-            <h1 class="text-4xl py-2">I'm Adrian Struszczyk</h1>
-            <h1 class="text-2xl text-grey-lightest">I build things with my keyboard</h1>
-            <p class="py-6 leading-normal">I'm currently a last year student at CUNY Hunter stuyding Computer Science.</p>
+       <div id="canvas" class="w-screen h-screen absolute"></div>
+        <div class="blurb absolute font-bold text-white w-5/6 lg:w-max mx-auto">
+            <h4 class="text-sm sm:text-base md:text-xl fade-in">Hello</h4>
+            <h1 class="text-lg sm:text-4xl py-2 fade-in">I'm Adrian Struszczyk</h1>
+            <h1 class="text-sm sm:text-2xl text-grey-lightest fade-in">I build things with my keyboard</h1>
+            <p class="text-xs lg:text-base py-6 leading-normal fade-in">I'm currently a last year student at CUNY Hunter studying Computer Science. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
     </section>
 </template>
@@ -13,48 +13,37 @@
 
 <script lang=ts>
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import {TweenMax} from 'gsap';
 import * as THREE from 'three';
+import {OrbitControls} from 'three-orbitcontrols-ts';
 import {EffectComposer, EffectPass, RenderPass, NoiseEffect, BlendFunction, Effect } from 'postprocessing';
+import {introConfig, IntroConfig} from '@/data/intro';
+import image from '@/assets/textures/nasa-desat.jpg';
+import {TweenMax} from 'gsap';
 import Stats from 'stats.js';
 import Mouse from '../utility/mouse';
 import * as dat from 'dat.gui';
-import image from '@/assets/textures/nasa-desat.jpg';
-import {OrbitControls} from 'three-orbitcontrols-ts';
 
-interface introConfig {
-    mousemove: {
-        delay: number,
-        tweenDuration: number,
-    },
-    sphere: {
-        rotation: {
-            x: number,
-            y: number,
-            z: number,
-        },
-    },
-};
+import ScrollReveal from 'scrollreveal';
 
 @Component
 export default class Intro extends Vue {
-
-    protected camera: THREE.PerspectiveCamera;
-    protected scene: THREE.Scene;
-    protected renderer: THREE.WebGLRenderer;
+    private config: IntroConfig;
+    private camera: THREE.PerspectiveCamera;
+    private scene: THREE.Scene;
+    private renderer: THREE.WebGLRenderer;
     private frameId: number;
-    private el: any;
     private composer: any;
     private clock: THREE.Clock;
     private mouse: Mouse;
     private controls: any;
     private meshes: Map<string, THREE.Mesh>;
-    private stats!: any;
-    private gui: dat.GUI;
-    protected config: introConfig;
+    private stats!: Stats;
+    private gui!: dat.GUI;
 
     constructor() {
         super();
+        this.config = introConfig;
+        this.frameId = -1;
         this.clock = new THREE.Clock();
         this.mouse = new Mouse();
         this.meshes = new Map();
@@ -63,37 +52,29 @@ export default class Intro extends Vue {
         this.setupLights();
         this.renderer = this.setupRenderer();
         this.composer = new EffectComposer(this.renderer);
-        this.config = {
-            mousemove: {
-                delay: 8,
-                tweenDuration: 30,
-            },
-            sphere: {
-                rotation: {
-                    x: 0.03125,
-                    y: 0.03125,
-                    z: 0,
-                },
-            },
-        };
-
-        // @ts-ignore
-        this.stats = new Stats();
-        this.gui = this.setupGUI();
-
         this.setupPostProcessing();
-        this.frameId = -1;
 
+        // this.stats = new Stats();
+        // this.gui = this.setupGUI();
         // this.setupControls();
     }
 
-    private mounted() {
-        this.$el.appendChild( this.composer.getRenderer().domElement );
-        this.$el.appendChild( this.stats.dom );
+    private created() {
         window.addEventListener('resize', this.onWindowResize);
         if (!this.controls) {
            window.addEventListener( 'mousemove', this.onMouseMove );
         }
+    }
+
+    private mounted() {
+        this.$el.appendChild( this.composer.getRenderer().domElement );
+        if (this.stats) {
+           this.$el.appendChild( this.stats.dom );
+        }
+
+        // @ts-ignore
+        ScrollReveal().reveal('.fade-in', {delay: 1200, interval: 200});
+
         this.start();
     }
 
@@ -211,12 +192,12 @@ export default class Intro extends Vue {
     }
 
     private animate = () => {
-        this.stats.begin();
+        // this.stats.begin();
 
         this.renderScene();
         this.frameId = window.requestAnimationFrame(this.animate);
 
-        this.stats.end();
+        // this.stats.end();
     }
 
     private renderScene = () => {
@@ -226,7 +207,7 @@ export default class Intro extends Vue {
 
         const sphere = this.meshes.get('sphere');
         if (sphere !== undefined) {
-            sphere.rotation.x += delta * this.config.sphere.rotation.x; // 1/32
+            sphere.rotation.x += delta * this.config.sphere.rotation.x;
             sphere.rotation.y += delta * this.config.sphere.rotation.y;
             sphere.rotation.z += delta * this.config.sphere.rotation.z;
         }
@@ -258,21 +239,18 @@ export default class Intro extends Vue {
 </script>
 
 
-<style>
-
-    #canvas {
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-    }
-
+<style lang="scss" scoped>
     .blurb {
-      position: absolute;
-      max-width: 1000px;
+      max-width: 700px;
       top: 30%;
       left: 50%;
       transform: translate(-50%, -30%);
-      font-weight: bold;
-      color: white;
+      p {
+          max-width: 500px;
+      }
+    }
+
+    .dg {
+        z-index: 100 !important;
     }
 </style>
