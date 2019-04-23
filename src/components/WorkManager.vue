@@ -73,20 +73,34 @@ export default class WorkManager extends Vue {
 }
 </script>
 
-<style scoped>
-    .bullet:before {
-        content: "-";
-        padding-right: 20px;
+<style lang="scss" scoped>
+    .bullet {
+        &:before {
+            content: "-";
+            padding-right: 20px;
+        }
+    }
+
+    .work-nav {
+        width: 100%;
+        @media only screen and (min-width: 768px) {
+            width: 150px;
+        }
+    }
+
+    .work-details {
+        max-width: 700px;
     }
 
     .company-name {
         background: linear-gradient(90deg,#184cef 30%,#e5422b 100%);
-	    -webkit-background-clip: text;
+	    background-clip: text;
         -webkit-text-fill-color: transparent;
         text-transform: uppercase;
     }
 
-    .work-nav-button--selected {
-        
+    .work-nav__item--selected {
+        background: #232427;
+        color: #fff;
     }
 </style>
