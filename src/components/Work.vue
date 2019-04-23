@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import WorkManager from '@/components/WorkManager.vue';
-import workData from '@/data/work.ts';
+import {workConfig, WorkItem} from '@/data/work.ts';
 
 @Component({
   components: {
@@ -20,11 +20,11 @@ import workData from '@/data/work.ts';
   },
 })
 export default class Work extends Vue {
-    private works: object[];
+    private works: WorkItem[];
 
     constructor() {
         super();
-        this.works = workData;
+        this.works = workConfig;
     }
 }
 </script>
