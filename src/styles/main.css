@@ -38,7 +38,9 @@
  * @import "components/forms";
  */
 
- @import "./custom-components.css";
+ @import "components/hamburger.css";
+
+ @import "components/custom-components.css";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your

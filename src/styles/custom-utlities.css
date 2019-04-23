@@ -1,4 +1,20 @@
-.hover\:bg-gray:hover {
+  /*
+  |-----------------------------------------------------------------------------
+  | Hover State                                  
+  |-----------------------------------------------------------------------------
+  |
+  | Here is where you define your SVG fill colors. By default we just provide
+  | `fill-current` which sets the fill to the current text color. This lets you
+  | specify a fill color using existing text color utilities and helps keep the
+  | generated CSS file size down.
+  |
+  | Class name: .hover-{property}
+  | CSS property: fill
+  |
+  */
+
+
+.hover\:bg-grey:hover {
    @apply bg-grey;
 }
 
@@ -6,9 +22,26 @@
     @apply text-white;
 }
 
-.w-max-1000px {
-    max-width: 1000px;
-}
+  /*
+  |-----------------------------------------------------------------------------
+  | Width                                    https://tailwindcss.com/docs/width
+  |-----------------------------------------------------------------------------
+  |
+  | Here is where you define your width utility sizes. These can be
+  | percentage based, pixels, rems, or any other units. By default
+  | we provide a sensible rem based numeric scale, a percentage
+  | based fraction scale, plus some other common use-cases. You
+  | can, of course, modify these values as needed.
+  |
+  |
+  | It's also worth mentioning that Tailwind automatically escapes
+  | invalid CSS class name characters, which allows you to have
+  | awesome classes like .w-2/3.
+  |
+  | Class name: .w-{size}
+  | CSS property: width
+  |
+  */
 
 @responsive {
     .w-max {
@@ -16,6 +49,16 @@
     }
 }
 
+
+ /*
+  |-----------------------------------------------------------------------------
+  | Transitions                                    
+  |-----------------------------------------------------------------------------
+  |
+  | Class name: .trans-{name}
+  | CSS property: transition
+  |
+  */
 
 .trans {
     transition: all .25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.15s;
@@ -40,3 +83,38 @@
 .trans-faster {
     transition-duration: .075s;
 }
+
+/*
+  |-----------------------------------------------------------------------------
+  | Column                                     
+  |-----------------------------------------------------------------------------
+  |
+  |
+  | Class name: .col-count-{size}
+  | CSS property: columb-count
+  |
+  */
+
+  @responsive {
+    .col-count-1 {
+        column-count: 1;
+    }
+
+    .col-count-2 {
+        column-count: 2;
+    }
+  }
+
+/*
+  |-----------------------------------------------------------------------------
+  | Z-index                                
+  |-----------------------------------------------------------------------------
+  |
+  | Class name: .z-{index}
+  | CSS property: z-index
+  |
+  */
+
+ .z-neg {
+    z-index: -1;
+ }

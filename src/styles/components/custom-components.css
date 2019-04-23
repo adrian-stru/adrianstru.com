@@ -1,0 +1,17 @@
+.work-nav__item {
+    @apply p-3 leading-normal text-center text-xs text-grey-darker cursor-pointer;
+}
+
+/**
+* Base layout for sections
+*/
+
+.base-grid {
+    @apply w-full py-32 px-6;
+}
+
+@media (min-width: 1000px) {
+    .base-grid {
+        @apply w-max mx-auto px-0;
+    }
+}
