@@ -14,7 +14,7 @@ const projectsConfig: ProjectInterface[] = [
         name: 'personal site',
         description: 'My first portfolio website that I designed and built.',
         githubUrl: 'https://github.com/adrian-stru/adrianstru.com',
-        siteUrl: '/',
+        siteUrl: '',
         tags: [
             'vue',
             'webgl',
@@ -45,8 +45,8 @@ const projectsConfig: ProjectInterface[] = [
     },
     {
         name: 'travel filters',
-        description: 'A progressive web app to help customers select their ring sizes in store and get an email for future reference.',
-        githubUrl: '',
+        description: 'Worked with classmates to create a web app that recommends travel destinations based on input from users.',
+        githubUrl: 'https://github.com/Hunter-College-CSCI-39548-Fall-2018/team6',
         siteUrl: '',
         tags: [
             'java',
@@ -61,7 +61,7 @@ const projectsConfig: ProjectInterface[] = [
         name: 'the people\'s jukebox',
 
         description: 'Collaborated with team to design and build a real-time and multi-platform jukebox app. I was responsible for building the backend api using a combination of HTTP and WebSockets.',
-        githubUrl: '',
+        githubUrl: 'https://github.com/adrian-stru/the-peoples-jukebox',
         siteUrl: '',
         tags: [
             'node.js',
@@ -72,33 +72,46 @@ const projectsConfig: ProjectInterface[] = [
         ],
     },
     {
-        name: 'ring sizing app',
-        description: 'A progressive web app to help customers select their ring sizes in store and get an email for future reference.',
-        githubUrl: '',
+        name: 'ring sizing',
+        description: 'A progressive web app meant to be used on a iPad in store to help customers remember their ring sizes.',
+        githubUrl: 'https://github.com/adrian-stru/rove-sizing',
         siteUrl: '',
         tags: [
-            'vue',
             'pwa',
-            'node',
+            'vue',
+            'vuex',
             'express',
+            'axios'
         ],
     },
     {
         name: 'antara life',
-        description: 'A progressive web app to help customers select their ring sizes in store and get an email for future reference.',
+        description: 'Ecommerce & blog for antaralife.com',
         githubUrl: '',
-        siteUrl: '',
+        siteUrl: 'https://antaralife.com',
+        tags: [
+            'craft commerce',
+            'php',
+            'twig',
+            'vue',
+        ],
+    },
+    {
+        name: 'rove nyc',
+        description: 'Custom theme written for rovenyc.com on Shopify',
+        githubUrl: '',
+        siteUrl: 'https://www.rovenyc.com',
         tags: [
             'vue',
-            'craft',
-            'php',
-            'express',
-            'docker',
+            'jquery',
+            'shopify',
+            'html',
+            'scss',
         ],
     },
     {
         name: 'building better',
-        description: 'A progressive web app to help customers select their ring sizes in store and get an email for future reference.',
+        description: 'International art contest for children of Caterpillar Employees.',
         githubUrl: '',
         siteUrl: '',
         tags: [
