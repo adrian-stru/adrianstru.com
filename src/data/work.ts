@@ -17,7 +17,7 @@ const workConfig: WorkItemInterface[] = [
             startDate: 'May 2018',
             endDate: 'February 2019',
             bullets: [
-              'Developed a blog & e-commerce site for a lineof herbal supplements',
+              'Developed a blog & e-commerce site for a line of herbal supplements',
               'Wrote custom integration to support product subscriptions and shipping fulfillment between cms and third-party services',
               'Simplified technical problems for the designer and the founder to collect requirements and design solutions',
             ],

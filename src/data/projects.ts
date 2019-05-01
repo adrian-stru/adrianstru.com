@@ -22,28 +22,6 @@ const projectsConfig: ProjectInterface[] = [
         ],
     },
     {
-        name: 'summers-left',
-        description: 'Small webapp that shows how many summers you have remaining',
-        githubUrl: '',
-        siteUrl: '',
-        tags: [
-            'react',
-            'typescript',
-            'd3.js',
-        ],
-    },
-    {
-        name: 'three-experiments',
-        description: 'A wip collection of three.js experiments.',
-        githubUrl: '',
-        siteUrl: '',
-        tags: [
-            'react',
-            'webgl',
-            'three.js',
-        ],
-    },
-    {
         name: 'travel filters',
         description: 'Worked with classmates to create a web app that recommends travel destinations based on input from users.',
         githubUrl: 'https://github.com/Hunter-College-CSCI-39548-Fall-2018/team6',
@@ -98,15 +76,14 @@ const projectsConfig: ProjectInterface[] = [
     },
     {
         name: 'rove nyc',
-        description: 'Custom theme written for rovenyc.com on Shopify',
+        description: 'Custom theme written for rovenyc.com on Shopify.',
         githubUrl: '',
         siteUrl: 'https://www.rovenyc.com',
         tags: [
-            'vue',
             'jquery',
             'shopify',
             'html',
-            'scss',
+            'css',
         ],
     },
     {
