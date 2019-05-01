@@ -3,9 +3,9 @@
        <div id="canvas" class="w-screen h-screen absolute"></div>
         <div class="blurb absolute font-bold text-white w-5/6 lg:w-max mx-auto">
             <h4 class="text-sm sm:text-base md:text-xl fade-in">Hello</h4>
-            <h1 class="text-lg sm:text-4xl py-2 fade-in">I'm Adrian Struszczyk</h1>
+            <h1 class="text-lg sm:text-4xl py-2 fade-in font-sans tracking-wide">I'm Adrian Struszczyk</h1>
             <h1 class="text-sm sm:text-2xl text-grey-lightest fade-in">I build things with my keyboard</h1>
-            <p class="text-xs lg:text-base py-6 leading-normal fade-in">I'm currently a last year student at CUNY Hunter studying Computer Science. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="text-xs lg:text-lg py-6 leading-normal fade-in font-sans tracking-wide">I'm currently a last year student at CUNY Hunter studying Computer Science. My interests include software engineering, web development, and cloud computing.</p>
         </div>
     </section>
 </template>

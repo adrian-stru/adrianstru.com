@@ -2,7 +2,7 @@
     <section id="contact" class="base-grid text-white bg-black mb-64">
         <div class="text-center">
             <h1 class="pb-6">Connect With Me</h1>
-            <p class="leading-normal w-full text-sm mx-auto sm:w-2/3 sm:text-base">Get in touch with me if you would like to work together or just to say hi. I am currently looking for new opportunities.</p>
+            <p class="leading-normal w-full text-sm mx-auto sm:w-2/3 sm:text-xl font-sans tracking-normal">Get in touch with me if you would like to work together or just to say hi. I am currently open to explore new opportunities.</p>
             <div>
                 <a class="contact-button trans my-6" @click.prevent="onMailButtonClick">
                     <div class="text-white">Get In Touch</div>

@@ -3,9 +3,9 @@
         <article v-for="(project, index) in projects" :key="index"
         class="card bg-grey trans">
             <div class="card-inner flex flex-col h-full">
-                <div class="text-xl mb-2">{{project.name}}</div>
-                <div class="text-sm leading-tight">{{project.description}}</div>
-                <div class="py-8">
+                <div class="text-xl mb-4">{{project.name}}</div>
+                <div class="text-md leading-normal font-sans tracking-wider">{{project.description}}</div>
+                <div class="py-8 mt-auto">
                     <a v-if="project.siteUrl != ''" :href="project.siteUrl" target="_blank">
                         <GlobeIcon class="text-white fill-current w-auto h-5 pr-2 icon trans"/>
                     </a>

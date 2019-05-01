@@ -10,15 +10,15 @@
         <div class="work-details mx-auto md:pl-8 md:ml-auto">
             <div class="work-details__head py-2 text-center md:text-left">
                 <span class="text-sm sm:text-lg">{{selectedItem.title}}</span>
-                <span class="text-sm sm:text-lg text-grey-lightest company-name"> @ {{selectedItem.company}}</span>
+                <span class="text-sm sm:text-lg text-grey-lightest company-name font-sans tracking-wide"> @ {{selectedItem.company}}</span>
             </div>
             <div class="work-details__date mb-8 text-grey-lighter text-center md:text-left">
                 <span class="text-sm">{{selectedItem.startDate}} {{(selectedItem.startDate === '') ? '' : '-'}} {{selectedItem.endDate}}</span>
             </div>
             <ul class="work-details__list p-0">
                 <li v-for="(bullet, index) in selectedItem.bullets" :key="index"
-                class="bullet pb-3 flex w-full mx-auto lg:m-0 text-left">
-                    <span class="text-sm leading-normal">{{bullet}}</span>
+                class="bullet pb-3 flex w-full mx-auto lg:m-0 text-left font-sans tracking-wide">
+                    <span class="text-md leading-normal">{{bullet}}</span>
                 </li>
             </ul>
         </div>
@@ -88,10 +88,15 @@ export default class WorkManager extends Vue {
     }
 
     .company-name {
-        background: linear-gradient(90deg,#184cef 30%,#e5422b 100%);
-	    background-clip: text;
-        -webkit-text-fill-color: transparent;
+        // background: linear-gradient(90deg,#184cef 30%,#e5422b 100%);
+	    // background-clip: text;
+        // -webkit-text-fill-color: transparent;
+        color: #8080C0;
         text-transform: uppercase;
+        transition: .25s all;
+        &:hover {
+            color: #B3B3F3;
+        }
     }
 
     .work-nav__item--selected {
