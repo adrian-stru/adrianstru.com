@@ -55,6 +55,8 @@ let colors = {
   'grey-lighter': '#979799',
   'grey-lightest': '#D2D2D3',
   'white': '#ffffff',
+  'primary': '#8080C0',
+  'primary-lighter': '#B3B3F3'
 }
 
 module.exports = {
