@@ -18,8 +18,16 @@
    @apply bg-grey;
 }
 
-.hover\:color-white:hover {
+.hover\:text-white:hover {
     @apply text-white;
+}
+
+.hover\:text-primary:hover {
+    @apply text-primary;
+}
+
+.hover\:text-primary-lighter:hover {
+    @apply text-primary-lighter;
 }
 
   /*

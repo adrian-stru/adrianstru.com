@@ -1,5 +1,5 @@
 html {
-    background: black;
+    @apply bg-black;
 }
 
 p {
@@ -7,11 +7,15 @@ p {
 }
 
 a {
-    color: inital;
+    @apply text-primary trans cursor-pointer;
     text-decoration: none;
 }
 
-ul {
+a:hover {
+    @apply text-primary-lighter;
+}
+
+ul, li {
     padding: 0;
     margin: 0;
     list-style: none;
