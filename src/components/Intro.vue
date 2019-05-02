@@ -1,11 +1,30 @@
 <template>
     <section id="intro">
-       <div id="canvas" class="w-screen h-screen absolute"></div>
-        <div class="blurb absolute font-bold text-white w-5/6 lg:w-max mx-auto">
-            <h4 class="text-sm sm:text-base md:text-xl fade-in">Hello</h4>
-            <h1 class="text-lg sm:text-4xl py-2 fade-in font-sans tracking-wide">I'm Adrian Struszczyk</h1>
-            <h1 class="text-sm sm:text-2xl text-grey-lightest fade-in">I build things with my keyboard</h1>
-            <p class="text-xs lg:text-lg py-6 leading-normal fade-in font-sans tracking-wide">I'm currently a last year student at CUNY Hunter studying Computer Science. My interests include software engineering, web development, and cloud computing.</p>
+       <div id="canvas" class="w-screen h-screen absolute"></div> <!-- WebGl Container-->
+        <div class="base-grid blurb absolute">
+            <h4 class="fade-in text-white font-bold text-sm sm:text-base md:text-xl">{{config.heading.greeting}}</h4>
+            <h1 class="fade-in text-white py-2 font-bold font-sans tracking-wide text-lg sm:text-4xl">{{config.heading.headline}}</h1>
+            <h1 class="fade-in font-bold text-grey-lightest text-sm sm:text-2xl ">{{config.heading.tagline}}</h1>
+            <div class="py-6">
+                <p  v-for="(inner, index) in config.paragraphs" :key="index" v-html="inner"
+                    class="fade-in leading-normal font-sans tracking-wide font-bold text-white text-xs md:text-base lg:text-lg"/>
+            </div>
+             <div class="fade-in mb-2 text-grey-lightest text-xs">{{config.coordinates}}</div>
+                <ul class="flex flex-row -mx-2">
+                    <li v-for="(item, index) in config.contact" :key="index"
+                        class="fade-in">
+                        <a  :href="item.link ? item.link : '#'"
+                            :target="item.newTab ? '_target' : ''"
+                            class="p-2 trans font-bold trans text-white hover:text-primary-lightest text-xs">
+                            {{item.name}}
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        <div class="fade-in absolute pin-b w-full text-center mb-4">
+            <a href="#" @click.prevent="scrollDown">
+                <DownArrow id="intro-down-arrow" class="text-white fill-current w-10 cursor-pointer"/>
+            </a>
         </div>
     </section>
 </template>
@@ -19,13 +38,28 @@ import {EffectComposer, EffectPass, RenderPass, NoiseEffect, BlendFunction, Effe
 import {introConfig, IntroConfig} from '@/data/intro';
 import image from '@/assets/textures/nasa-desat.jpg';
 import {TweenMax} from 'gsap';
+import { ScrollToPlugin } from 'gsap/all';
 import Stats from 'stats.js';
 import Mouse from '../utility/mouse';
+import DownArrow from '@/assets/icons/arrow-down.svg';
+import GithubIcon from '@/assets/icons/github.svg';
+import LinkedInIcon from '@/assets/icons/linkedin.svg';
+import EmailIcon from '@/assets/icons/email.svg';
 import * as dat from 'dat.gui';
+
+// Needed because ScrollToPlugin is removed during tree shaking
+const plugin = [ScrollToPlugin];
 
 import ScrollReveal from 'scrollreveal';
 
-@Component
+@Component({
+  components: {
+      DownArrow,
+      GithubIcon,
+      LinkedInIcon,
+      EmailIcon,
+  },
+})
 export default class Intro extends Vue {
     private config: IntroConfig;
     private camera: THREE.PerspectiveCamera;
@@ -72,8 +106,13 @@ export default class Intro extends Vue {
            this.$el.appendChild( this.stats.dom );
         }
 
-        // @ts-ignore
-        ScrollReveal().reveal('.fade-in', {delay: 1200, interval: 200});
+        const fadeInEls = document.querySelectorAll('#intro .fade-in');
+        const width = document.body.offsetWidth;
+        ScrollReveal().reveal(fadeInEls, {
+            delay: (width >= 1000) ? 1200 : 200,
+            // @ts-ignore
+            interval: 200,
+        });
 
         this.start();
     }
@@ -235,6 +274,17 @@ export default class Intro extends Vue {
             },
         });
     }
+
+    private scrollDown() {
+        TweenMax.to(window, 1, {
+            scrollTo: {
+                y: '#about',
+                autoKill: false,
+            },
+            // @ts-ignore
+            ease: Expo.easeOut,
+        });
+    }
 }
 </script>
 
@@ -242,9 +292,9 @@ export default class Intro extends Vue {
 <style lang="scss" scoped>
     .blurb {
       max-width: 700px;
-      top: 30%;
+      top: 20%;
       left: 50%;
-      transform: translate(-50%, -30%);
+      transform: translate(-50%, -20%);
       p {
           max-width: 500px;
       }
