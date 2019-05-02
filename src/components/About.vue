@@ -34,15 +34,19 @@ export default class About extends Vue {
     }
 
     private mounted() {
-        // @ts-ignore
-        ScrollReveal().reveal('.about-inner__blurb, .about-header', {
+        const fadeInBottomEls = document.querySelectorAll('#about .fade-in-bottom');
+        const fadeInLeftEls = document.querySelectorAll('#about .fade-in-left');
+        ScrollReveal().reveal(fadeInBottomEls, {
             delay: 50,
+            // @ts-ignore
+            interval: 150,
             cleanup: true,
             distance: '50px',
         });
-        // @ts-ignore
-        ScrollReveal().reveal('.about-inner_skills', {
-            delay: 50,
+        ScrollReveal().reveal(fadeInLeftEls, {
+            delay: 750,
+            // @ts-ignore
+            interval: 150,
             cleanup: true,
             distance: '150px',
             origin: 'left',
