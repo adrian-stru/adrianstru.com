@@ -4,26 +4,12 @@
         :class="[menuActive ? 'fixed' : 'absolute']">
         <nav class="flex flex-row justify-between">
             <div class="w-1/4 text-white logo">Adrian Struszczyk</div>
-            <div v-if="!showHamburger" class="w-3/4 flex justify-end">
+            <div v-if="!showMenu" class="w-3/4 flex justify-end">
                 <ul class="inline-block">
-                    <li class="nav-link inline-block px-4 text-sm text-white font-bold ">
-                        <a href="#" class="text-white no-underline" @click.prevent="onNavClick('about')">
-                            About
-                        </a>
-                    </li>
-                    <li class="nav-link inline-block px-4 text-sm text-white font-bold">
-                        <a href="#" class="text-white no-underline" @click.prevent="onNavClick('work')">
-                            Work
-                        </a>
-                    </li>
-                    <li class="nav-link inline-block px-4 text-sm text-white font-bold" @click.prevent="onNavClick('projects')">
-                        <a href="#" class="text-white no-underline">
-                            Projects
-                        </a>
-                    </li>
-                    <li class="nav-link inline-block pl-4 text-sm text-white font-bold" @click.prevent="onNavClick('contact')">
-                        <a href="#" class="text-white no-underline">
-                        Contact
+                    <li v-for="(link, index) in config.links" :key="index"
+                        class="nav-link inline-block px-4 text-sm text-white font-bold">
+                        <a href="#" class="text-white" @click.prevent="onNavClick(link.anchor)">
+                            {{link.name}}
                         </a>
                     </li>
                 </ul>
@@ -41,8 +27,8 @@
     </header>
     <Menu 
     :active="menuActive"
+    :config="config"
     @closeMenu="closeMenuHandler"/>
-
     </div>
 </template>
 
@@ -53,6 +39,7 @@
     import { ScrollToPlugin } from 'gsap/all';
     import Menu from '@/components/Menu.vue';
     import ScrollReveal from 'scrollreveal';
+    import {NavConfig, navConfig} from '@/data/nav';
 
     const MAXWIDTH = 1000;
 
@@ -67,11 +54,13 @@
     export default class Nav extends Vue {
         private width: number;
         private menuActive: boolean;
+        private config: NavConfig;
 
         constructor() {
             super();
             this.width = this.getDocumentWidth();
             this.menuActive = false;
+            this.config = navConfig;
         }
 
         private created() {
@@ -79,12 +68,17 @@
         }
 
         private mounted() {
-            /**
-             * TODO: Factor out all scroll reveal calls. Delays should respond to doc width is < || > 1000.
-             */
-            // @ts-ignore
-            ScrollReveal().reveal('.nav-link', {delay: 200, interval: 200});
-            ScrollReveal().reveal('.logo', {delay: 1000});
+            const width = document.body.offsetWidth;
+            const logoEl = document.querySelectorAll('.logo');
+            const linksEl = document.querySelectorAll('.nav-link');
+            ScrollReveal().reveal(linksEl,
+                {
+                    delay: 200,
+                    // @ts-ignore
+                    interval: 200,
+                },
+            );
+            ScrollReveal().reveal(logoEl, {delay: (width >= 1000) ? 1000 : 100});
         }
 
         private destroyed() {
@@ -98,13 +92,16 @@
             }
         }
 
-        private onNavClick(divId: string) {
-            if (document.getElementById(divId) === null) {
+        private onNavClick(anchor: string) {
+            if (document.querySelector(anchor) === null) {
                 return;
             }
 
             TweenMax.to(window, 1, {
-                    scrollTo: '#' + divId,
+                    scrollTo: {
+                        y: anchor,
+                        autoKill: false,
+                    },
                     // @ts-ignore
                     ease: Expo.easeOut,
             });
@@ -120,7 +117,7 @@
             );
         }
 
-        private get showHamburger(): boolean {
+        private get showMenu(): boolean {
             return this.width < MAXWIDTH;
         }
 
