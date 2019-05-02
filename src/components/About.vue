@@ -1,13 +1,16 @@
 <template>
-    <section class="base-grid text-white bg-black" id="about">
-        <div class="w-full lg:w-2/3 lg:mx-auto">
-            <h1 class="about-header text-center sm:text-left">About Me</h1>
-            <div class="about-inner py-6 w-full">
-                <div class="about-inner__blurb text-grey-lightest leading-normal text-left font-sans text-xl">
-                    <p v-for="(inner, index) in config.paragraphs" :key="index" v-html="inner"/>
-                </div>
-                <ul class="about-inner_skills col-count-2 text-grey-lightest text-sm leading-loose">
-                    <li v-for="(skill, index) in config.skills" :key="index">
+    <section class="base-grid text-white" id="about">
+        <h2 class="text-center fade-in-bottom">About Me</h2>
+        <div class="flex flex-row flex-wrap fade-in-bottom">
+            <div class="w-full md:w-1/3 pt-12 fade-in-bottom">
+                <div class="headshot mx-auto"></div>
+            </div>
+            <div class="w-full md:w-2/3 md:pl-12 pt-6">
+                <p  v-for="(inner, index) in config.paragraphs" :key="index" v-html="inner"
+                    class="text-grey-lightest leading-normal font-sans text-xl fade-in-bottom"/>
+                <ul class="sm:col-count-2">
+                    <li v-for="(skill, index) in config.skills" :key="index"
+                        class="text-grey-lightest leading-loose text-md fade-in-left">
                         - {{skill}}
                     </li>
                 </ul>
@@ -49,14 +52,11 @@ export default class About extends Vue {
 </script>
 
 <style lang="scss">
-    .about-inner {
-        a {
-            color: #8080C0;
-            transition: 0.5s all;
-            position: relative;
-            &:hover {
-                color: #B3B3F3;
-            }  
-        }
+    .headshot {
+        background: url("../assets/images/headshot.jpg") no-repeat;
+        background-size: contain;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
     }
 </style>
