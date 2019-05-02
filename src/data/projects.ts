@@ -3,8 +3,8 @@
 interface ProjectInterface {
     name: string;
     description: string;
-    githubUrl: string;
-    siteUrl: string;
+    githubUrl?: string;
+    siteUrl?: string;
     tags: string[];
 }
 
@@ -59,7 +59,7 @@ const projectsConfig: ProjectInterface[] = [
             'vue',
             'vuex',
             'express',
-            'axios'
+            'axios',
         ],
     },
     {
