@@ -1,5 +1,5 @@
 <template>
-    <div class="projects-library py-12 flex flex-wrap">
+    <div class="projects-library py-12 flex flex-wrap text-white">
         <article v-for="(project, index) in projects" :key="index"
         class="card bg-grey trans">
             <div class="card-inner flex flex-col h-full">
@@ -7,17 +7,17 @@
                 <div class="text-md leading-normal font-sans tracking-wider">{{project.description}}</div>
                 <div class="py-8 mt-auto">
                     <a v-if="project.siteUrl != ''" :href="project.siteUrl" target="_blank">
-                        <GlobeIcon class="text-white fill-current w-auto h-5 pr-2 icon trans"/>
+                        <GlobeIcon class="text-grey-lightest fill-current w-auto h-5 pr-2 trans hover:text-white"/>
                     </a>
                     <a v-if="project.githubUrl != ''" :href="project.githubUrl" target="_blank">
-                        <GithubIcon class="text-white fill-current w-auto h-5 icon trans"/>
+                        <GithubIcon class="text-grey-lightest fill-current w-auto h-5 trans hover:text-white"/>
                     </a>
                 </div>
                 <div class="mt-auto">
                     <ul class="p-0 m-0 flex flex-wrap">
                         <li v-for="(tag, index) in project.tags" :key="index"
                         class="inline-block mr-2 leading-normal text-xs tracking-wide">
-                            #{{tag}}
+                            {{tag}}
                         </li>
                     </ul>
                 </div>
@@ -58,12 +58,6 @@ export default class ProjectManager extends Vue {
 </script>
 
 <style lang="scss" scoped>
-    .icon {
-        &:hover {
-            opacity: 0.5;
-        }
-    }
-
     .card {
         margin-bottom: 2%;
         padding: 20px;

@@ -1,9 +1,7 @@
 <template>
-    <section id="projects" class="base-grid text-white bg-black">
-        <div class="w-full">
-            <h1 class="text-center">Projects</h1>
-            <ProjectManager :projects="projectsData"/>
-        </div>
+    <section id="projects" class="base-grid">
+        <h2 class="text-center text-white">Projects</h2>
+        <ProjectManager :projects="projectsData"/>
     </section>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-    <section id="work" class="base-grid text-white bg-black z-1">
-        <h1 class="text-center">Work</h1>
+    <section id="work" class="base-grid text-white">
+        <h2 class="text-center">Work</h2>
         <WorkManager :works="works"/>
     </section>
 </template>
