@@ -23,7 +23,7 @@ const navConfig: NavConfigInterface = {
         },
         {
             name: 'Contact',
-            anchor: '#contacts',
+            anchor: '#contact',
         },
     ],
 };
