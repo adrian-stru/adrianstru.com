@@ -12,6 +12,11 @@
                             {{link.name}}
                         </a>
                     </li>
+                    <li class="nav-link inline-block px-4 text-sm text-white font-bold">
+                        <a class="text-white" href="./struszczyk_adrian_resume.pdf" target="_blank">
+                            Resume
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div v-else>

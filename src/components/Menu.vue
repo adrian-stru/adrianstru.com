@@ -6,6 +6,9 @@
                 class="text-2xl py-3 cursor-pointer menu-link" @click.prevent="onMenuLinkClick(link.anchor)">
                 {{link.name}}
             </li>
+            <li class="text-2xl py-3 cursor-pointer menu-link">
+                <a class="text-white" href="./struszczyk_adrian_resume.pdf" target="_blank">Resume</a>
+            </li>
         </ul>
     </div>
 </template>
