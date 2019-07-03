@@ -11,6 +11,19 @@ interface ProjectInterface {
 
 const projectsConfig: ProjectInterface[] = [
     {
+        name: 'dash',
+        description: 'Full stack react dashboard app for practice with draggable to-do list, notes application, and weather info.',
+        tags: [
+            'react',
+            'graphql',
+            'apollo',
+            'express',
+            'styled components',
+        ],
+        githubUrl: '',
+        siteUrl: '',
+    },
+    {
         name: 'personal site',
         description: 'My first portfolio website that I designed and built.',
         githubUrl: 'https://github.com/adrian-stru/adrianstru.com',
@@ -38,7 +51,7 @@ const projectsConfig: ProjectInterface[] = [
     {
         name: 'the people\'s jukebox',
 
-        description: 'Collaborated with team to design and build a real-time and multi-platform jukebox app. I was responsible for building the backend api using a combination of HTTP and WebSockets.',
+        description: 'Collaborated with classmates to design and build a real-time and multi-platform jukebox app.',
         githubUrl: 'https://github.com/adrian-stru/the-peoples-jukebox',
         siteUrl: '',
         tags: [
@@ -51,7 +64,7 @@ const projectsConfig: ProjectInterface[] = [
     },
     {
         name: 'ring sizing',
-        description: 'A progressive web app meant to be used on a iPad in store to help customers remember their ring sizes.',
+        description: 'A progressive web app designed for tablets to be used in store to help customers remember their ring sizes.',
         githubUrl: 'https://github.com/adrian-stru/rove-sizing',
         siteUrl: '',
         tags: [
@@ -64,7 +77,7 @@ const projectsConfig: ProjectInterface[] = [
     },
     {
         name: 'antara life',
-        description: 'Ecommerce & blog for antaralife.com',
+        description: 'Blog and e-commerce store for Antara Life.',
         githubUrl: '',
         siteUrl: 'https://antaralife.com',
         tags: [

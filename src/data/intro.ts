@@ -34,7 +34,7 @@ const introConfig: IntroConfigInterface = {
         tagline: 'I build things with my keyboard',
     },
     paragraphs: [
-        'I\'m currently a last year student at CUNY Hunter studying Computer Science. My interests include software engineering, web development, and cloud computing.',
+        'I am currently a last year student at CUNY Hunter studying Computer Science with a passion for web technologies and software craftsmanship.',
     ],
     contact: [
         {
